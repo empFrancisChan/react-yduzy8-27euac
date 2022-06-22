@@ -1,0 +1,24 @@
+{
+  "name": "rdqcpz--run",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@mui/material": "5.8.4",
+    "react-dom": "18.2.0",
+    "@emotion/react": "11.9.3",
+    "@emotion/styled": "11.9.3",
+    "@types/react": "18.0.14",
+    "react": "18.2.0",
+    "@types/react-dom": "18.0.5",
+    "typescript": "4.7.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-scripts": "latest"
+  }
+}
