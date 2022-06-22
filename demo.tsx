@@ -10,22 +10,26 @@ export default function DiscreteSlider() {
   const [step, setStep] = useState(1);
   const [price, setPrice] = useState(1000);
   const [value, setValue] = useState(Math.floor(accountBalance / price / 2));
-  var timer1;
   const [max, setMax] = useState(Math.floor(accountBalance / price));
-  // useEffect(() => {
-  //   loop();
-  //   return () => {
-  //     clearTimeout(timer1);
-  //   };
-  // }, []);
+  let timer1;
+
+  useEffect(() => {
+    loop();
+    return () => {
+      clearTimeout(timer1);
+    };
+  }, []);
+
   function loop() {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
     timer1 = setTimeout(loop, 1000);
   }
+
   const handleChange2 = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number);
     setMax(Math.floor(accountBalance / price));
   };
+
   return (
     <Box sx={{ width: 300 }}>
       <Box>Price:{price}</Box>
