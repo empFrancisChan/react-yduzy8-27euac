@@ -46,7 +46,7 @@ export default function DiscreteSlider() {
             onChange={handleChange2}
           />
         </Grid>
-        <Grid item>10000</Grid>
+        <Grid item>{accountBalance}</Grid>
       </Grid>
       <Grid container spacing={2} alignItems="center">
         <Grid item>Required margin: {value * price}</Grid>
