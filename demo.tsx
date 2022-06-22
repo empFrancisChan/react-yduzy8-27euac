@@ -48,9 +48,11 @@ export default function DiscreteSlider() {
         </Grid>
         <Grid item>10000</Grid>
       </Grid>
-      <Box>
-        Required margin: {value * price} Lot: {value}
-      </Box>
+      <Grid container spacing={2} alignItems="center">
+        <Grid item>Required margin: {value * price}</Grid>
+
+        <Grid item>Lot: {value}</Grid>
+      </Grid>
       {/* <Box>{max}</Box>
       <Box>{price}</Box> */}
       {/* <Button variant="contained" onClick={loop}>
