@@ -47,9 +47,9 @@ export default function DiscreteSlider() {
       </Box>
       {/* <Box>{max}</Box>
       <Box>{price}</Box> */}
-      <Button variant="contained" onClick={loop}>
+      {/* <Button variant="contained" onClick={loop}>
         Start Random price
-      </Button>
+      </Button> */}
     </Box>
   );
 }
