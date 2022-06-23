@@ -59,7 +59,7 @@ export default function DiscreteSlider() {
       </Grid>
       <Grid container spacing={2} alignItems="center">
         <Grid item>
-          Lot: {value}
+          Lot:
           <IconButton
             color="primary"
             aria-label="upload picture"
@@ -71,6 +71,7 @@ export default function DiscreteSlider() {
           >
             <RemoveIcon fontSize="small" />
           </IconButton>
+          {value}
           <IconButton
             color="primary"
             aria-label="upload picture"
