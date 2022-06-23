@@ -2,6 +2,9 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 
@@ -49,10 +52,30 @@ export default function DiscreteSlider() {
         <Grid item>{accountBalance}</Grid>
       </Grid>
       <Grid container spacing={2} alignItems="center">
-        <Grid item>Required margin: {value * price}</Grid>
-
         <Grid item>Lot: {value}</Grid>
+        <IconButton
+          color="primary"
+          aria-label="upload picture"
+          component="span"
+          onClick={() => {
+            setValue(value - 1);
+          }}
+        >
+          <RemoveIcon />
+        </IconButton>
+
+        <IconButton
+          color="primary"
+          aria-label="upload picture"
+          component="span"
+          onClick={() => {
+            setValue(value + 1);
+          }}
+        >
+          <AddIcon />
+        </IconButton>
       </Grid>
+      <Grid item>Required margin: {value * price}</Grid>
       {/* <Box>{max}</Box>
       <Box>{price}</Box> */}
       {/* <Button variant="contained" onClick={loop}>
