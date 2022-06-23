@@ -52,28 +52,31 @@ export default function DiscreteSlider() {
         <Grid item>{accountBalance}</Grid>
       </Grid>
       <Grid container spacing={2} alignItems="center">
-        <Grid item>Lot: {value}</Grid>
-        <IconButton
-          color="primary"
-          aria-label="upload picture"
-          component="span"
-          onClick={() => {
-            setValue(value - 1);
-          }}
-        >
-          <RemoveIcon />
-        </IconButton>
-
-        <IconButton
-          color="primary"
-          aria-label="upload picture"
-          component="span"
-          onClick={() => {
-            setValue(value + 1);
-          }}
-        >
-          <AddIcon />
-        </IconButton>
+        <Grid item>
+          Lot: {value}
+          <IconButton
+            color="primary"
+            aria-label="upload picture"
+            component="span"
+            size="small"
+            onClick={() => {
+              setValue(value - 1);
+            }}
+          >
+            <RemoveIcon />
+          </IconButton>
+          <IconButton
+            color="primary"
+            aria-label="upload picture"
+            component="span"
+            size="small"
+            onClick={() => {
+              setValue(value + 1);
+            }}
+          >
+            <AddIcon />
+          </IconButton>
+        </Grid>
       </Grid>
       <Grid item>Required margin: {value * price}</Grid>
       {/* <Box>{max}</Box>
