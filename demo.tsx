@@ -27,7 +27,13 @@ export default function DiscreteSlider() {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
     timer1 = setTimeout(loop, 1000);
   }
-
+  function changeValue(originalPrice) {
+    setMax(Math.floor(accountBalance / price));
+    if (originalPrice > max || originalPrice < 0) {
+      return;
+    }
+    setValue(originalPrice);
+  }
   const handleChange2 = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number);
     setMax(Math.floor(accountBalance / price));
@@ -60,7 +66,7 @@ export default function DiscreteSlider() {
             component="span"
             size="small"
             onClick={() => {
-              setValue(value - 1);
+              changeValue(value - 1);
             }}
           >
             <RemoveIcon fontSize="small" />
@@ -71,7 +77,7 @@ export default function DiscreteSlider() {
             component="span"
             size="small"
             onClick={() => {
-              setValue(value + 1);
+              changeValue(value + 1);
             }}
           >
             <AddIcon fontSize="small" />
