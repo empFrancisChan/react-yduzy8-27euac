@@ -63,7 +63,7 @@ export default function DiscreteSlider() {
               setValue(value - 1);
             }}
           >
-            <RemoveIcon />
+            <RemoveIcon fontSize="small" />
           </IconButton>
           <IconButton
             color="primary"
@@ -74,7 +74,7 @@ export default function DiscreteSlider() {
               setValue(value + 1);
             }}
           >
-            <AddIcon />
+            <AddIcon fontSize="small" />
           </IconButton>
         </Grid>
       </Grid>
