@@ -71,9 +71,7 @@ export default function DiscreteSlider() {
           >
             <RemoveIcon fontSize="small" />
           </IconButton>
-          &ensp;
           {value}
-          &ensp;
           <IconButton
             color="primary"
             aria-label="upload picture"
