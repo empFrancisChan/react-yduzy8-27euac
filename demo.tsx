@@ -14,7 +14,7 @@ export default function DiscreteSlider() {
   const [price, setPrice] = useState(1000);
   const [value, setValue] = useState(Math.floor(accountBalance / price / 2));
   const [max, setMax] = useState(Math.floor(accountBalance / price));
-  let timer1;
+  let timer1: any;
 
   useEffect(() => {
     loop();
@@ -27,15 +27,15 @@ export default function DiscreteSlider() {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
     timer1 = setTimeout(loop, 1000);
   }
-  function changeValue(originalPrice) {
+  function changeValue(originalPrice: number) {
     setMax(Math.floor(accountBalance / price));
     if (originalPrice > max || originalPrice < 0) {
       return;
     }
     setValue(originalPrice);
   }
-  const handleChange2 = (event: Event, newValue: number | number[]) => {
-    setValue(newValue as number);
+  const handleChange2 = (event: Event, newValue: number) => {
+    setValue(newValue);
     setMax(Math.floor(accountBalance / price));
   };
 
@@ -71,7 +71,9 @@ export default function DiscreteSlider() {
           >
             <RemoveIcon fontSize="small" />
           </IconButton>
+          &ensp;
           {value}
+          &ensp;
           <IconButton
             color="primary"
             aria-label="upload picture"
