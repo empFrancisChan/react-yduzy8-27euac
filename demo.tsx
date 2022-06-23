@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+//import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -86,8 +86,6 @@ export default function DiscreteSlider() {
         </Grid>
       </Grid>
       <Grid item>Required margin: {value * price}</Grid>
-      {/* <Box>{max}</Box>
-      <Box>{price}</Box> */}
       {/* <Button variant="contained" onClick={loop}>
         Start Random price
       </Button> */}
