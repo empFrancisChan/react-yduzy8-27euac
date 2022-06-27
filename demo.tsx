@@ -32,7 +32,9 @@ export default function DiscreteSlider() {
     //   setTimer(null);
     //   console.log(timer);
     // }
-    loop(true);
+    if (isDragging) {
+      loop(true);
+    }
   }, [isDragging]);
 
   function loop(isChanging: boolean) {
@@ -59,7 +61,7 @@ export default function DiscreteSlider() {
   const handleChangeCommitted = (event, newValue) => {
     setIsDragging(false);
     clearTimeout(timer);
-    loop(false);
+    //loop(false);
   };
 
   const handleChange2 = (event: Event, newValue: number) => {
