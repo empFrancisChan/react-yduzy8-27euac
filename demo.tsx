@@ -15,7 +15,7 @@ export default function DiscreteSlider() {
   const [value, setValue] = useState(Math.floor(accountBalance / price / 2));
   const [max, setMax] = useState(Math.floor(accountBalance / price));
   const [isDragging, setIsDragging] = useState(false);
-  let timer1: any;
+  var timer1: any;
 
   useEffect(() => {
     loop(false);
@@ -32,11 +32,10 @@ export default function DiscreteSlider() {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
     if (!isChanging) {
       setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
-    } else {
-      timer1 = setTimeout(() => {
-        loop(isChanging);
-      }, 1000);
     }
+    timer1 = setTimeout(() => {
+      loop(isChanging);
+    }, 1000);
   }
   function changeValue(originalPrice: number) {
     setMax(Math.floor(accountBalance / price));
@@ -47,22 +46,26 @@ export default function DiscreteSlider() {
   }
 
   const handleChangeCommitted = (event, newValue) => {
-    //setIsDragging(false);
+    setIsDragging(false);
   };
 
   const handleChange2 = (event: Event, newValue: number) => {
     setValue(newValue);
     setMax(Math.floor(accountBalance / price));
     if (!isDragging) {
-      //console.log(isDragging);
+      console.log(isDragging);
+      console.log(timer1);
       clearTimeout(timer1);
+      console.log(timer1);
       setIsDragging(true);
     }
   };
 
   return (
     <Box sx={{ width: 300 }}>
-      <Box>Price:{price}</Box>
+      <Box>
+        Price:{price} {isDragging.toString()}
+      </Box>
       <Grid container spacing={1} alignItems="center">
         <Grid item>0</Grid>
         <Grid item xs>
