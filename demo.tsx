@@ -42,7 +42,7 @@ export default function DiscreteSlider() {
     setTimer(
       setTimeout(() => {
         loop(isChanging);
-      }, 2000)
+      }, 1000)
     );
   }
   function changeValue(originalPrice: number) {
@@ -63,7 +63,7 @@ export default function DiscreteSlider() {
     if (!isDragging) {
       console.log('clear');
       setIsDragging(true);
-      clearTimeout(timer);
+      //clearTimeout(timer);
       setTimer(null);
     }
     clearTimeout(timer);
