@@ -24,10 +24,13 @@ export default function DiscreteSlider() {
     };
   }, []);
 
+  useEffect(() => {
+    console.log(isDragging);
+  }, [isDragging]);
   function loop() {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
+    //console.log(isDragging);
     if (!isDragging) {
-      console.log(isDragging);
       setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
     }
     timer1 = setTimeout(loop, 1000);
@@ -47,8 +50,8 @@ export default function DiscreteSlider() {
     setValue(newValue);
     setMax(Math.floor(accountBalance / price));
     if (!isDragging) {
+      console.log(isDragging);
       setIsDragging(true);
-      console.log('isDragging');
     }
   };
 
