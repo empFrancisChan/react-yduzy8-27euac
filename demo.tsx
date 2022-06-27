@@ -25,14 +25,14 @@ export default function DiscreteSlider() {
     };
   }, []);
 
-  useEffect(() => {
-    // if (isDragging) {
-    //   console.log(timer);
-    //   clearTimeout(timer);
-    //   setTimer(null);
-    //   console.log(timer);
-    // }
-  }, [isDragging]);
+  // useEffect(() => {
+  //   // if (isDragging) {
+  //   //   console.log(timer);
+  //   //   clearTimeout(timer);
+  //   //   setTimer(null);
+  //   //   console.log(timer);
+  //   // }
+  // }, [isDragging]);
 
   function loop(isChanging: boolean) {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
