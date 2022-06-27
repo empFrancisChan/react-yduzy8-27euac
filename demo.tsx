@@ -36,7 +36,7 @@ export default function DiscreteSlider() {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
     if (!isChanging) {
       //setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
-      setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 100000);
+      setAccountBalance((Math.floor(Math.random() * 10) + 1) * 1000 + 100000);
     }
     setTimer(
       setTimeout(() => {
