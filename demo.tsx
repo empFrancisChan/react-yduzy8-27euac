@@ -37,7 +37,7 @@ export default function DiscreteSlider() {
   function loop(isChanging: boolean) {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
     if (!isChanging) {
-      console.log('123');
+      //console.log('123');
       setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
     }
 
