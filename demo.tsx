@@ -72,7 +72,7 @@ export default function DiscreteSlider() {
     //clearTimeout(timer1);
     if (!isDragging) {
       console.log('clear');
-      loop(false);
+      loop(true);
       setIsDragging(true);
     }
   };
