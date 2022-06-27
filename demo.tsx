@@ -42,9 +42,9 @@ export default function DiscreteSlider() {
     }
     console.log('???');
     //setTimer(
-    setTimeout(() => {
-      loop(isChanging);
-    }, 1000);
+    // setTimeout(() => {
+    //   loop(isChanging);
+    // }, 1000);
     //);
   }
   function changeValue(originalPrice: number) {
