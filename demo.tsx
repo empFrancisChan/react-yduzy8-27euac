@@ -57,7 +57,7 @@ export default function DiscreteSlider() {
 
   const handleChangeCommitted = (event, newValue) => {
     setIsDragging(false);
-    // clearTimeout(timer);
+    clearTimeout(timer);
     // setTimer(
     //   setTimeout(() => {
     //     loop(false);
