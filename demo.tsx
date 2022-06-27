@@ -34,16 +34,15 @@ export default function DiscreteSlider() {
     // }
   }, [isDragging]);
 
-  function loop(isChanging) {
+  function loop(isChanging: boolean) {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
     if (!isChanging) {
       setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
     }
-    setTimer(
-      setTimeout(() => {
-        loop(isChanging);
-      }, 1000)
-    );
+
+    timer1 = setTimeout(() => {
+      loop(isChanging);
+    }, 1000);
   }
   function changeValue(originalPrice: number) {
     setMax(Math.floor(accountBalance / price));
@@ -55,19 +54,28 @@ export default function DiscreteSlider() {
 
   const handleChangeCommitted = (event, newValue) => {
     setIsDragging(false);
+    // clearTimeout(timer);
+    // setTimer(
+    //   setTimeout(() => {
+    //     loop(false);
+    //   }, 1000)
+    // );
   };
 
   const handleChange2 = (event: Event, newValue: number) => {
     setValue(newValue);
     setMax(Math.floor(accountBalance / price));
+    //clearTimeout(timer);
+    clearTimeout(timer1);
     if (!isDragging) {
       console.log('clear');
+      // setTimer(
+      //   setTimeout(() => {
+      //     loop(true);
+      //   }, 1000)
+      // );
       setIsDragging(true);
-      //clearTimeout(timer);
-      //setTimer(null);
     }
-    clearTimeout(timer);
-    //setTimer(null);
   };
 
   return (
