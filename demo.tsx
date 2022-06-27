@@ -40,7 +40,7 @@ export default function DiscreteSlider() {
       //console.log('123');
       setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
     }
-
+    console.log('???');
     setTimer(
       setTimeout(() => {
         loop(isChanging);
