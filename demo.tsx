@@ -18,7 +18,7 @@ export default function DiscreteSlider() {
   let timer1: any;
 
   useEffect(() => {
-    loop();
+    loop(false);
     return () => {
       clearTimeout(timer1);
     };
@@ -27,13 +27,16 @@ export default function DiscreteSlider() {
   useEffect(() => {
     console.log(isDragging);
   }, [isDragging]);
-  function loop() {
+
+  function loop(isChanging) {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
-    //console.log(isDragging);
-    if (!isDragging) {
+    if (!isChanging) {
       setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
+    } else {
+      timer1 = setTimeout(() => {
+        loop(isChanging);
+      }, 1000);
     }
-    timer1 = setTimeout(loop, 1000);
   }
   function changeValue(originalPrice: number) {
     setMax(Math.floor(accountBalance / price));
@@ -44,14 +47,15 @@ export default function DiscreteSlider() {
   }
 
   const handleChangeCommitted = (event, newValue) => {
-    setIsDragging(false);
+    //setIsDragging(false);
   };
 
   const handleChange2 = (event: Event, newValue: number) => {
     setValue(newValue);
     setMax(Math.floor(accountBalance / price));
     if (!isDragging) {
-      console.log(isDragging);
+      //console.log(isDragging);
+      clearTimeout(timer1);
       setIsDragging(true);
     }
   };
