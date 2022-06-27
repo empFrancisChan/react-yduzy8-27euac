@@ -64,10 +64,10 @@ export default function DiscreteSlider() {
       console.log('clear');
       setIsDragging(true);
       //clearTimeout(timer);
-      setTimer(null);
+      //setTimer(null);
     }
     clearTimeout(timer);
-    setTimer(null);
+    //setTimer(null);
   };
 
   return (
