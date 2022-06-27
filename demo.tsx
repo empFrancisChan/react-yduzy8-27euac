@@ -9,10 +9,11 @@ import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 
 export default function DiscreteSlider() {
-  const [accountBalance, setAccountBalance] = useState(10000);
+  const [accountBalance, setAccountBalance] = useState(100000);
   const [step, setStep] = useState(1);
   const [price, setPrice] = useState(1000);
   const [value, setValue] = useState(Math.floor(accountBalance / price / 2));
+  const [value2, setValue2] = useState(Math.floor(accountBalance / price / 2));
   const [max, setMax] = useState(Math.floor(accountBalance / price));
   const [isDragging, setIsDragging] = useState(false);
   const [timer, setTimer] = useState(null);
@@ -35,7 +36,7 @@ export default function DiscreteSlider() {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
     if (!isChanging) {
       //setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
-      setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
+      setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 100000);
     }
     setTimer(
       setTimeout(() => {
@@ -50,6 +51,13 @@ export default function DiscreteSlider() {
     }
     setValue(originalPrice);
   }
+  function changeValue2(originalPrice: number) {
+    setMax(Math.floor(accountBalance / price));
+    if (originalPrice > max || originalPrice < 0) {
+      return;
+    }
+    setValue2(originalPrice);
+  }
 
   const handleChangeCommitted = (event, newValue) => {
     setIsDragging(false);
@@ -57,13 +65,16 @@ export default function DiscreteSlider() {
     loop(false);
   };
 
-  const handleChange2 = (event: Event, newValue: number) => {
+  const handleChange = (event: Event, newValue: number) => {
     setValue(newValue);
     //setMax(Math.floor(accountBalance / price));
     if (!isDragging) {
       clearTimeout(timer);
       setIsDragging(true);
     }
+  };
+  const handleChange2 = (event: Event, newValue: number) => {
+    setValue2(newValue);
   };
 
   return (
@@ -80,7 +91,7 @@ export default function DiscreteSlider() {
             min={0}
             max={Math.floor(accountBalance / price)}
             value={value}
-            onChange={handleChange2}
+            onChange={handleChange}
             onChangeCommitted={handleChangeCommitted}
           />
         </Grid>
@@ -126,10 +137,10 @@ export default function DiscreteSlider() {
             step={step}
             marks
             min={0}
-            max={Math.floor(10 / price)}
+            max={Math.floor(3000 / price)}
           />
         </Grid>
-        <Grid item>10</Grid>
+        <Grid item>3000</Grid>
       </Grid>
       <Grid container spacing={1} alignItems="center">
         <Grid item>0</Grid>
@@ -138,18 +149,39 @@ export default function DiscreteSlider() {
             defaultValue={0}
             step={step}
             marks
+            value={value2}
+            onChange={handleChange2}
             min={0}
-            max={Math.floor(100000 / price)}
+            max={Math.floor(500000 / price)}
           />
         </Grid>
-        <Grid item>100000</Grid>
+        <Grid item>500000</Grid>
       </Grid>
-      <Grid container spacing={1} alignItems="center">
-        <Grid item>0</Grid>
-        <Grid item xs>
-          <Slider defaultValue={0} step={step} marks min={0} max={150} />
-        </Grid>
-        <Grid item>100000</Grid>
+      <Grid item>
+        Lot:
+        <IconButton
+          color="primary"
+          aria-label="upload picture"
+          component="span"
+          size="small"
+          onClick={() => {
+            changeValue2(value2 - 1);
+          }}
+        >
+          <RemoveIcon fontSize="small" />
+        </IconButton>
+        {value2}
+        <IconButton
+          color="primary"
+          aria-label="upload picture"
+          component="span"
+          size="small"
+          onClick={() => {
+            changeValue2(value2 + 1);
+          }}
+        >
+          <AddIcon fontSize="small" />
+        </IconButton>
       </Grid>
     </Box>
   );
