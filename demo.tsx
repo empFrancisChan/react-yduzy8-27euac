@@ -43,9 +43,10 @@ export default function DiscreteSlider() {
     setValue(originalPrice);
   }
 
-  function commitChange() {
+  const handleChangeCommitted = (event, newValue) => {
     setIsDragging(false);
-  }
+  };
+
   const handleChange2 = (event: Event, newValue: number) => {
     setValue(newValue);
     setMax(Math.floor(accountBalance / price));
@@ -96,9 +97,7 @@ export default function DiscreteSlider() {
             onClick={() => {
               changeValue(value + 1);
             }}
-            onChangeCommitted={() => {
-              commitChange();
-            }}
+            onChangeCommitted={handleChangeCommitted}
           >
             <AddIcon fontSize="small" />
           </IconButton>
