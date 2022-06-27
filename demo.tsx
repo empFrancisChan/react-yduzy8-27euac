@@ -21,7 +21,7 @@ export default function DiscreteSlider() {
   useEffect(() => {
     loop(false);
     return () => {
-      setTimer(null);
+      clearTimeout(timer);
     };
   }, []);
 
