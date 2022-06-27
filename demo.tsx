@@ -118,6 +118,32 @@ export default function DiscreteSlider() {
       {/* <Button variant="contained" onClick={loop}>
         Start Random price
       </Button> */}
+      <Grid container spacing={1} alignItems="center">
+        <Grid item>0</Grid>
+        <Grid item xs>
+          <Slider
+            defaultValue={value}
+            step={step}
+            marks
+            min={0}
+            max={Math.floor(10 / price)}
+          />
+        </Grid>
+        <Grid item>10</Grid>
+      </Grid>
+      <Grid container spacing={1} alignItems="center">
+        <Grid item>0</Grid>
+        <Grid item xs>
+          <Slider
+            defaultValue={value}
+            step={step}
+            marks
+            min={0}
+            max={Math.floor(10 / price)}
+          />
+        </Grid>
+        <Grid item>100000</Grid>
+      </Grid>
     </Box>
   );
 }
