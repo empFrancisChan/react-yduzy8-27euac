@@ -41,11 +41,11 @@ export default function DiscreteSlider() {
       setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
     }
     console.log('???');
-    setTimer(
-      setTimeout(() => {
-        loop(isChanging);
-      }, 1000)
-    );
+    //setTimer(
+    setTimeout(() => {
+      loop(isChanging);
+    }, 1000);
+    //);
   }
   function changeValue(originalPrice: number) {
     setMax(Math.floor(accountBalance / price));
