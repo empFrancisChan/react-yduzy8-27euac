@@ -9,11 +9,12 @@ import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 
 export default function DiscreteSlider() {
-  const accountBalance = 10000;
+  const [accountBalance, setAccountBalance] = useState(10000);
   const [step, setStep] = useState(1);
   const [price, setPrice] = useState(1000);
   const [value, setValue] = useState(Math.floor(accountBalance / price / 2));
   const [max, setMax] = useState(Math.floor(accountBalance / price));
+  const [isDragging, setIsDragging] = useState(false);
   let timer1: any;
 
   useEffect(() => {
@@ -25,6 +26,10 @@ export default function DiscreteSlider() {
 
   function loop() {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
+    if (!isDragging) {
+      console.log(isDragging);
+      setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
+    }
     timer1 = setTimeout(loop, 1000);
   }
   function changeValue(originalPrice: number) {
@@ -34,9 +39,17 @@ export default function DiscreteSlider() {
     }
     setValue(originalPrice);
   }
+
+  function commitChange() {
+    setIsDragging(false);
+  }
   const handleChange2 = (event: Event, newValue: number) => {
     setValue(newValue);
     setMax(Math.floor(accountBalance / price));
+    if (!isDragging) {
+      setIsDragging(true);
+      console.log('isDragging');
+    }
   };
 
   return (
@@ -79,6 +92,9 @@ export default function DiscreteSlider() {
             size="small"
             onClick={() => {
               changeValue(value + 1);
+            }}
+            onChangeCommitted={() => {
+              commitChange();
             }}
           >
             <AddIcon fontSize="small" />
