@@ -65,9 +65,10 @@ export default function DiscreteSlider() {
   const handleChange2 = (event: Event, newValue: number) => {
     setValue(newValue);
     setMax(Math.floor(accountBalance / price));
-    clearTimeout(timer);
+    //clearTimeout(timer);
     //clearTimeout(timer1);
     if (!isDragging) {
+      clearTimeout(timer);
       console.log('clear');
       //loop(true);
       setIsDragging(true);
