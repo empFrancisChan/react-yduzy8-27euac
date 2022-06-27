@@ -37,12 +37,15 @@ export default function DiscreteSlider() {
   function loop(isChanging: boolean) {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
     if (!isChanging) {
+      console.log('123');
       setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
     }
 
-    timer1 = setTimeout(() => {
-      loop(isChanging);
-    }, 1000);
+    setTimer(
+      setTimeout(() => {
+        loop(isChanging);
+      }, 1000)
+    );
   }
   function changeValue(originalPrice: number) {
     setMax(Math.floor(accountBalance / price));
@@ -65,15 +68,11 @@ export default function DiscreteSlider() {
   const handleChange2 = (event: Event, newValue: number) => {
     setValue(newValue);
     setMax(Math.floor(accountBalance / price));
-    //clearTimeout(timer);
-    clearTimeout(timer1);
+    clearTimeout(timer);
+    //clearTimeout(timer1);
     if (!isDragging) {
       console.log('clear');
-      // setTimer(
-      //   setTimeout(() => {
-      //     loop(true);
-      //   }, 1000)
-      // );
+      loop(false);
       setIsDragging(true);
     }
   };
