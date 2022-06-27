@@ -25,14 +25,15 @@ export default function DiscreteSlider() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   // if (isDragging) {
-  //   //   console.log(timer);
-  //   //   clearTimeout(timer);
-  //   //   setTimer(null);
-  //   //   console.log(timer);
-  //   // }
-  // }, [isDragging]);
+  useEffect(() => {
+    // if (isDragging) {
+    //   console.log(timer);
+    //   clearTimeout(timer);
+    //   setTimer(null);
+    //   console.log(timer);
+    // }
+    loop(true);
+  }, [isDragging]);
 
   function loop(isChanging: boolean) {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
@@ -41,11 +42,11 @@ export default function DiscreteSlider() {
       setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
     }
     console.log('???');
-    //setTimer(
-    // setTimeout(() => {
-    //   loop(isChanging);
-    // }, 1000);
-    //);
+    setTimer(
+      setTimeout(() => {
+        loop(isChanging);
+      }, 1000)
+    );
   }
   function changeValue(originalPrice: number) {
     setMax(Math.floor(accountBalance / price));
@@ -58,11 +59,7 @@ export default function DiscreteSlider() {
   const handleChangeCommitted = (event, newValue) => {
     setIsDragging(false);
     clearTimeout(timer);
-    // setTimer(
-    //   setTimeout(() => {
-    //     loop(false);
-    //   }, 1000)
-    // );
+    loop(false);
   };
 
   const handleChange2 = (event: Event, newValue: number) => {
@@ -72,7 +69,7 @@ export default function DiscreteSlider() {
     //clearTimeout(timer1);
     if (!isDragging) {
       console.log('clear');
-      loop(true);
+      //loop(true);
       setIsDragging(true);
     }
   };
