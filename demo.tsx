@@ -15,18 +15,23 @@ export default function DiscreteSlider() {
   const [value, setValue] = useState(Math.floor(accountBalance / price / 2));
   const [max, setMax] = useState(Math.floor(accountBalance / price));
   const [isDragging, setIsDragging] = useState(false);
-  var timer1: any;
+  const [timer, setTimer] = useState(null);
+  var timer1: any = null;
 
   useEffect(() => {
     loop(false);
     return () => {
-      clearTimeout(timer1);
+      setTimer(null);
     };
   }, []);
 
   useEffect(() => {
-    clearTimeout(timer1);
-    console.log(isDragging);
+    if (isDragging) {
+      console.log(timer);
+      clearTimeout(timer);
+      setTimer(null);
+      console.log(timer);
+    }
   }, [isDragging]);
 
   function loop(isChanging) {
@@ -34,9 +39,11 @@ export default function DiscreteSlider() {
     if (!isChanging) {
       setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
     }
-    timer1 = setTimeout(() => {
-      loop(isChanging);
-    }, 1000);
+    setTimer(
+      setTimeout(() => {
+        loop(isChanging);
+      }, 2000)
+    );
   }
   function changeValue(originalPrice: number) {
     setMax(Math.floor(accountBalance / price));
@@ -74,6 +81,7 @@ export default function DiscreteSlider() {
             max={max}
             value={value}
             onChange={handleChange2}
+            onChangeCommitted={handleChangeCommitted}
           />
         </Grid>
         <Grid item>{accountBalance}</Grid>
@@ -101,7 +109,6 @@ export default function DiscreteSlider() {
             onClick={() => {
               changeValue(value + 1);
             }}
-            onChangeCommitted={handleChangeCommitted}
           >
             <AddIcon fontSize="small" />
           </IconButton>
