@@ -34,7 +34,7 @@ export default function DiscreteSlider() {
   function loop(isChanging: boolean) {
     setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
     if (!isChanging) {
-      //console.log('123');
+      //setPrice((Math.floor(Math.random() * 10) + 1) * 10 + 1000);
       setAccountBalance((Math.floor(Math.random() * 10) + 1) * 100 + 10000);
     }
     setTimer(
@@ -59,10 +59,9 @@ export default function DiscreteSlider() {
 
   const handleChange2 = (event: Event, newValue: number) => {
     setValue(newValue);
-    setMax(Math.floor(accountBalance / price));
+    //setMax(Math.floor(accountBalance / price));
     if (!isDragging) {
       clearTimeout(timer);
-      console.log('clear');
       setIsDragging(true);
     }
   };
@@ -74,11 +73,12 @@ export default function DiscreteSlider() {
         <Grid item>0</Grid>
         <Grid item xs>
           <Slider
+            //key={`slider-${value}`}
             defaultValue={value}
             step={step}
             marks
             min={0}
-            max={max}
+            max={Math.floor(accountBalance / price)}
             value={value}
             onChange={handleChange2}
             onChangeCommitted={handleChangeCommitted}
@@ -122,7 +122,7 @@ export default function DiscreteSlider() {
         <Grid item>0</Grid>
         <Grid item xs>
           <Slider
-            defaultValue={value}
+            defaultValue={0}
             step={step}
             marks
             min={0}
@@ -135,12 +135,19 @@ export default function DiscreteSlider() {
         <Grid item>0</Grid>
         <Grid item xs>
           <Slider
-            defaultValue={value}
+            defaultValue={0}
             step={step}
             marks
             min={0}
-            max={Math.floor(10 / price)}
+            max={Math.floor(100000 / price)}
           />
+        </Grid>
+        <Grid item>100000</Grid>
+      </Grid>
+      <Grid container spacing={1} alignItems="center">
+        <Grid item>0</Grid>
+        <Grid item xs>
+          <Slider defaultValue={0} step={step} marks min={0} max={150} />
         </Grid>
         <Grid item>100000</Grid>
       </Grid>
